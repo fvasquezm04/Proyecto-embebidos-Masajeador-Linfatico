@@ -5,14 +5,16 @@
 #include "MOTOR.h"
 #include "FEEDBACK.h"
 #include "UART.h"
+#include "WEBSERVER.h"
 
 class Manager {
     private:
-        Fsr _fsrIzq; 
+        Fsr _fsrIzq;
         Fsr _fsrDer;
-        Motor _motor; 
-        FeedbackSystem _ui; 
+        Motor _motor;
+        FeedbackSystem _ui;
         Uart _uart;
+        WebServer _webserver;
 
         int _vMin;
         int _vMax; 

@@ -28,6 +28,7 @@ void Manager::init(){
     _uart.init();
 
     _motor.setIntensity(_motorIntensidad);
+    _webserver.init();
 }
 
 Manager::~Manager(){
@@ -63,14 +64,16 @@ void Manager::update(){
             vIzq, vDer, vPromedio, porcentaje);
     _uart.sendUart(mensaje_uart);
 
+    _webserver.setData(porcentaje, vPromedio);
+
     if (porcentaje >= 0.0f && porcentaje < 30.0f){
-        _ui.alertasLow(); 
+        _ui.alertasLow();
     }
     else if (porcentaje >= 30.0f && porcentaje < 80.0f){
-        _ui.alertasOk(); 
+        _ui.alertasOk();
     }
     else if (porcentaje >= 80.0f && porcentaje <= 100.0f){
-        _ui.alertasHigh(); 
+        _ui.alertasHigh();
     }
 }
     
